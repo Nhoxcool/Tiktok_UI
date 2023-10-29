@@ -6,7 +6,6 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
     faCoins,
     faGear,
     faSignOut,
@@ -25,6 +24,8 @@ import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import Image from '~/components/image';
+import { InboxIcon, MessageIcon, UploadIcon } from '~/components/icons';
 
 const cx = classNames.bind(styles);
 
@@ -137,9 +138,20 @@ function Header() {
                 <div className={cx('action')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="upload video" placement="bottom">
+                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload}></FontAwesomeIcon>
+                                    <UploadIcon></UploadIcon>
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Messages" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon></MessageIcon>
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon></InboxIcon>
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
@@ -152,7 +164,7 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 alt="Nguyen Van A"
                                 src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/dc6d398597f8100621bfe38cc12792d1.jpeg?x-expires=1698066000&x-signature=LJMUQeL0bq3UR6sc4zEb3oSDzgk%3D"
                                 className={cx('user-avatar')}
